@@ -60,7 +60,7 @@ app.get('/publications', function(req, res){
         res.send(403, '403 Forbidden');
       } else {
         var publications = data.body;
-        console.log(publications);
+        //console.log(publications);
         res.render('publications', {publications : publications});
       }
     })
