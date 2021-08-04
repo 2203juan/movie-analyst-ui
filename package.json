@@ -1,24 +1,33 @@
 {
   "name": "movie-analyst-ui",
   "version": "1.0.0",
-  "description": "ui for the movie analyst website....im totally not ripping this off.......",
+  "description": "Movie Ui Fixed by Juan Jose Hoyos",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --exit",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juan-ruiz/movie-analyst-ui.git"
+    "url": "git+https://github.com/2203juan/movie-analyst-ui.git"
   },
-  "author": "juan ruiz",
+  "author": "Juan Jose Hoyos Urcue",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/juan-ruiz/movie-analyst-ui/issues"
+    "url": "https://github.com/2203juan/movie-analyst-ui/issues"
   },
-  "homepage": "https://github.com/juan-ruiz/movie-analyst-ui#readme",
+  "homepage": "https://github.com/2203juan/movie-analyst-ui#readme",
   "dependencies": {
-    "ejs": "^2.7.4",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "nodemon": "^2.0.9",
-    "superagent": "^3.8.3"
+    "mocha": "^9.0.3",
+    "should": "^13.2.3",
+    "superagent": "^6.1.0",
+    "supertest": "^6.1.4"
   }
 }

@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    options {
+        timeout(time: 3, unit: 'MINUTES')
+    }
+
+    environment {
+        ARTIFACT_ID = "juan2203/movie-ui:${env.BUILD_ID}"
+    }
+
+    stages {
+        stage("Build Docker Image"){
+            steps{
+                script {
+                    customImage = docker.build("${env.ARTIFACT_ID}")
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh "docker run -p 3030:3030 ${env.ARTIFACT_ID} npm test"
+            }
+        }
+
+        stage("Publish Docker Image in DockerHub Repo"){
+            steps {
+                script {
+                    docker.withRegistry("", "dockerHub") {
+                        customImage.push()
+                    }
+                }
+            }   
+        }
+
+    }  
+
+
+}
