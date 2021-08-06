@@ -12,7 +12,10 @@ pipeline {
     stages {
         stage("Build Docker Image"){
             steps{
-                sh "docker build -t ${ARTIFACT_ID} -t juan2203/movie-ui:latest ."
+                script {
+                    customImage = docker.build("${env.ARTIFACT_ID}")
+                    latestImage = docker.build("juan2203/movie-ui:latest")
+                }
             }
         }
 
@@ -27,6 +30,7 @@ pipeline {
                 script {
                     docker.withRegistry("", "dockerHub") {
                         customImage.push()
+                        latestImage.push()
                     }
                 }
             }   
