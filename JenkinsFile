@@ -12,9 +12,7 @@ pipeline {
     stages {
         stage("Build Docker Image"){
             steps{
-                script {
-                    customImage = docker.build("${env.ARTIFACT_ID}")
-                }
+                sh "docker build -t ${ARTIFACT_ID} -t juan2203/movie-ui:latest ."
             }
         }
 
